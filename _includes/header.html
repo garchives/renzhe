@@ -1,0 +1,73 @@
+<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div class="header-inner">
+    <div class="site-brand-wrapper">
+        <div class="site-meta custom-logo"> {% comment %} try rmove custom-logo {% endcomment %}
+            <div class="site-meta-headline">
+                <a>
+                <img class="custom-logo-image" src="{{ '/assets/images/avatar.png' | relative_url }}"
+                    alt="{{ site.title }}"/>
+                </a>
+            </div>
+
+            <div class="custom-logo-site-title">
+                <a href="{{ '/' | relative_url}}"  class="brand" rel="start">
+                <span class="logo-line-before"><i></i></span>
+                <span class="site-title">{{ site.name }}</span>
+                <span class="logo-line-after"><i></i></span>
+                </a>
+            </div>
+            <h1 class="site-subtitle" itemprop="description">{{ site.subtitle }}</h1>
+        </div>
+
+        <div class="site-nav-toggle">
+            <button>
+                <span class="btn-bar"></span>
+                <span class="btn-bar"></span>
+                <span class="btn-bar"></span>
+            </button>
+        </div>
+    </div>
+
+    <nav class="site-nav">
+        <ul id="menu" class="menu">
+            {% assign navigation = site.data.navigation | where: 'enable', true %}
+            {% for nav in navigation %}
+            <li class="menu-item menu-item-{{ nav.name }}">
+                <a href="{{ nav.path | relative_url }}" rel="section">
+                    <i class="menu-item-icon fa fa-fw fa-{{nav.icon}}"></i> <br />
+                    <span>{{ nav.name }}</span>
+                </a>
+            </li>
+            {% endfor %}
+
+            <li class="menu-item menu-item-search">
+                <a href="javascript:;" class="popup-trigger">
+                    <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+                    <span>搜索</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="site-search">
+            {% if site.data.search.algolia.enable %}
+                {% include search/algolia-search/dom.html %}
+            {% endif %}
+
+            {% if site.data.search.local.enable %}
+            <div class="popup search-popup local-search-popup">
+                <div class="local-search-header clearfix">
+                    <span class="search-icon"><i class="fa fa-search"></i></span>
+                    <span class="popup-btn-close"><i class="fa fa-times-circle"></i></span>
+                    <div class="local-search-input-wrapper">
+                        <input autocomplete="off"
+                                placeholder="Searching..." spellcheck="false"
+                                type="text" id="local-search-input">
+                    </div>
+                </div>
+                <div id="local-search-result"></div>
+            </div>
+            {% endif %}
+        </div>
+    </nav>
+    </div>
+</header>

@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------
+# Menu Settings
+# ---------------------------------------------------------------
+
+# When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -> archives)
+# menu:
+#   home: /
+#   categories: /categories/
+#   about: /about/
+#   archives: /archives/
+#   tags: /tags/
+#   # sitemap: /sitemap.xml
+#   # commonweal: /404.html
+
+
+# # Enable/Disable menu icons.
+# # Icon Mapping:
+# #   Map a menu item to a specific FontAwesome icon name.
+# #   Key is the name of menu item and value is the name of FontAwesome icon. Key is case-senstive.
+# #   When an question mask icon presenting up means that the item has no mapping icon.
+# menu_icons:
+#   enable: true
+#   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
+#   home: home
+#   about: user
+#   categories: book # th
+#   schedule: calendar
+#   tags: tags
+#   archives: archive
+#   sitemap: sitemap
+#   commonweal: heartbeat
+
+- name: 文章
+  icon: home
+  path: /
+  enable: true
+- name: 思考
+  icon: home
+  path: /
+  enable: true
+- name: 读书
+  icon: book
+  path: /categories/
+  enable: true
+- name: 标签
+  icon: tags
+  path: /tags/
+  enable: true
+- name: 归档
+  icon: archive
+  path: /archives/
+  enable: true
+- name: 关于
+  icon: user
+  path: /about/
+  enable: false

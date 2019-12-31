@@ -1,0 +1,13 @@
+# Sidebar Display, available value:
+#  - post    expand on posts automatically. Default.
+#  - always  expand for all pages automatically
+#  - hide    expand only when click on the sidebar toggle icon.
+#  - none  Totally remove sidebar including sidebar toggle.
+display: post
+
+# Sidebar offset from top menubar in pixels.
+offset: 12
+offset_float: 0
+
+# Scroll percent label in b2t button
+scrollpercent: false

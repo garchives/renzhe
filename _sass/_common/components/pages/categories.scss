@@ -1,0 +1,27 @@
+.category-all-page {
+    .category-all-title { text-align: center; }
+
+    .category-all { margin-top: 20px; }
+
+    .category-list {
+        margin: 0 0 40px 45px;
+        padding: 0;
+        list-style: none;
+    }
+
+    .category-list-item {
+        display: inline-block;
+        margin: 0 8px 12px 0;
+    }
+
+    .category-list-count {
+        color: $grey;
+        position: relative;
+        left:-0.9em;
+        &.-clear-left {
+            left: 0;
+        }
+    }
+
+    .category-list-child { padding-left: 10px; }
+}

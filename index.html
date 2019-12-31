@@ -1,0 +1,27 @@
+---
+layout: default
+---
+
+{% assign __ = site.data.params %}
+
+<!-- Post lists -->
+<section id="posts" class="posts-collapse">
+    {% for post in paginator.posts %}
+        {% assign postdate = post.date | date: "%Y.%m" %}
+        {% if postdate != showdate %}
+            {% assign showdate = postdate %}
+            <div class="collection-title fa fa-calendar-o"><h2>{{ showdate }}</h2></div>
+        {% endif %}
+        {% include post-collapse.html %}
+    {% endfor %}
+</section>
+
+<!-- pager -->
+{% if paginator.total_pages > 1 %}
+<nav class="pagination">
+    {% assign prev_text = '<i class="fa fa-angle-left"></i>' %}
+    {% assign next_text = '<i class="fa fa-angle-right"></i>' %}
+    {% include paginator.html %}
+    {{ paginator }}
+</nav>
+{% endif %}

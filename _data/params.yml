@@ -1,0 +1,49 @@
+title:
+  archive: Archive
+  category: Category
+  tag: Tag
+  schedule: Schedule
+  archives: Archives
+  categories: Categories
+  tags: Tags
+  about: About
+
+menu:
+  home: 文
+  archives: 档
+  categories: 类
+  tags: 签 #
+  about: 己
+  search: 搜
+  schedule: Schedule
+  sitemap: Sitemap
+  commonweal: Commonweal 404
+
+post:
+  created: Post created
+  modified: Post modified
+  sticky: Sticky
+  posted: Posted on
+  in: In
+  more: more
+  read_more: Read more
+  toc_empty: This post does not have a Table of Contents
+  visitors: Visitors
+  min2read: Reading time
+  copyright:
+      author: Post author
+      link: Post link
+      license_title: Copyright Notice
+      license_content: 'All articles in this blog are licensed under
+        <a href="%s" rel="external nofollow" target="_blank">%s</a> unless stating additionally.'
+
+state:
+  posts: posts
+  pages: pages
+  tags: tags
+  categories: categories
+
+symbol:
+  comma: ', '
+  period: '. '
+  colon: ':'

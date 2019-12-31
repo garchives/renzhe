@@ -1,0 +1,19 @@
+ .book-title-mark {
+    &.-left::before {
+        content: "《";
+        position: relative;
+        right: -0.2em;
+    }
+    &.-right::after {
+        content: "》";
+        position: relative;
+        left: -0.2em;
+    }
+}
+.book-title-all {
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+}
+.book-title {
+    border-bottom: 1px solid #ddd;
+}

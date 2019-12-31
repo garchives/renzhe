@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+{% assign __ = site.data.params %}
+
+<div id="posts" class="posts-expand">
+    <div class="tag-cloud">
+        <!-- <div class="tag-cloud-title">{{site.tags.size}} tags in total</div> -->
+        <div class="tag-cloud-tags">
+        {% assign min_font = 12 %}
+        {% assign max_font = 30 %}
+        {% assign amount = 200 %}
+        {% assign color = true %}
+        {% assign start_color = '204,204,204' %}
+        {% assign end_color = '17,17,17' %}
+        {% include helper/tagcloud.html %}
+        {{ tagcloud }}
+        </div>
+    </div>
+</div>
+
+{% assign __ = site.data.params %}
+
+<div id="posts" class="posts-collapse">
+  <div class="collection-title fa fa-tags">
+    <h2><span>{{ page.tag }}</span><h2>
+  </div>
+
+  {% assign paginate = site.tag.paginate | default: site.paginate  %}
+  {% assign paginate_path = site.tag.paginate_path | default: site.paginate_path  %}
+
+  {% for tag_posts in site.tags %}
+    {% assign tag = tag_posts[0] | url_encode | replace: '+', '%20' %}
+    {% assign posts = tag_posts[1] %}
+
+    {% for post in posts %}
+      {% if paginate > 0 %}
+        {% assign page_num = forloop.index0 | divided_by: paginate | plus: 1 %}
+        {% assign route = '/' | append: tag %}
+        {% if page_num != 1 %}
+          {% assign route = route | append: paginate_path | replace: ':num', page_num %}
+        {% endif %}
+      {% endif %}
+
+      {% include post-collapse.html %}
+    {% endfor %}
+  {% endfor %}
+</div>
+
+<nav class="pagination"></nav>

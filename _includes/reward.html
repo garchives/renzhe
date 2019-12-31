@@ -1,0 +1,23 @@
+{% if site.data.reward.enable %}
+<div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>{{ site.data.reward.comment }}</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+        {% if site.data.reward.wechatpay %}
+        <div id="wechat" style="display: inline-block">
+            <img id="wechat_qr" src="" alt="{{ site.author }} WeChat Pay"/>
+            <p>微信打赏</p>
+        </div>
+        {% endif %}
+
+        {% if site.data.reward.alipay %}
+        <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="" alt="{{ site.author }} Alipay"/>
+            <p>支付宝打赏</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}

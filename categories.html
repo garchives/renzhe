@@ -1,0 +1,120 @@
+---
+layout: default
+---
+
+<div id="posts" class="posts-expand">
+    <div class="category-all-page">
+        <div class="category-all-title" style="display:none;">已阅读 {{site.categories.size}} 本书</div>
+        <div class="category-all">
+            <ul class="category-list">
+                <li class="category-list-item">
+                    <a class="category-list-link" href="/categories/"><span class="book-title-all">All</span></a>
+                    <sup class="category-list-count -clear-left">{{ site.categories.size }}</sup>
+                </li>
+                {% for cat_posts in site.categories %}
+                <li class="category-list-item">
+                    {% assign cat = cat_posts[0] %}
+                    {% assign posts = cat_posts[1] %}
+                    {% assign cat_url_encode = cat | url_encode | replace: '+', '%20' %}
+                    <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: cat_url_encode }}">
+                        <span class="book-title-mark -left"></span>
+                        <span class="book-title">{{ cat | replace: '《', '' | replace: '》', '' }}</span>
+                        <span class="book-title-mark -right"></span>
+                    </a>
+                    <sup class="category-list-count">{{ posts.size }}</sup>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Book lists -->
+<section id="posts" class="posts-collapse">
+    {% comment %} Create a liquid array {% endcomment %}
+    {% capture books %}
+    {% for category in site.categories %}
+        {% assign name = category[0] %}
+        {% assign posts = category[1] %}
+        {% assign updated_date = posts.first.date %}
+        {% assign created_date = posts.last.date %}
+        {% assign c_year = created_date | date: "%Y" %}
+        {% assign c_monthday = created_date | date: "%m-%d" %}
+        {% assign u_year = updated_date | date: "%Y" %}
+        {% assign u_monthday = updated_date | date: "%m-%d" %}
+        {% capture alltags %}{% for post in posts %}{% if post.tags and post.tags.size > 0 %}{{ post.tags | sort_natural | join: '\' }}{% unless forloop.last %}\{% endunless%}{% endif %}{% endfor %}{% endcapture %}
+        {% assign toptags = alltags | strip | split: '\' | sort_natural %}
+        {% assign finaltags = "" | split: "" %}
+        {% assign freq = 1 %}
+        {% for tag in toptags %}
+            {% if tag != prevtag %}
+                {% assign freq = 1 %}
+            {% else %}
+                {% assign freq = freq | plus: 1 %}
+            {% endif %}
+            {% assign ftag = tag | prepend: '@' | prepend: freq %}
+            {% assign finaltags = finaltags | push: ftag %}
+            {% assign prevtag = tag %}
+        {% endfor %}
+        {% assign mytags = finaltags | sort_natural | reverse %}
+
+        {% assign tags = "" | split: "" %}
+        {% for mytag in mytags %}
+            {% assign currtag = mytag | split: '@' | last %}
+            {% if currtag != prtag %}
+                {% assign tags = tags | push: currtag %}
+            {% endif %}
+            {% assign prtag = currtag %}
+        {% endfor %}
+        {{mytags | join: ','}}=={{tags | join: '#'}}
+        {{c_year}}___{{c_monthday}}___{{name}}___{{u_year}}___{{u_monthday}}___{{alltags}}___{{tags}}__SEPARATOR__
+    {% endfor %}
+    {% endcapture %}
+
+    {% comment %} 按创建时间排序，rstrip 不可换成 strip {% endcomment %}
+    {% assign books = books | rstrip | split:'__SEPARATOR__' | sort_natural | reverse %}
+
+     <ul>
+        {% for book in books %}
+            <li>{{book }}</li>
+        {% endfor %}
+    </ul>
+
+    {% for book in books %}
+        {% assign ebook = book | strip | split: '___' %}
+        {% assign c_year = ebook[0] | strip %}
+        {% assign c_monthday = ebook[1] | strip %}
+        {% assign name = ebook[2] | strip %}
+        {% assign u_year = ebook[3] | strip %}
+        {% assign u_monthday = ebook[4] | strip %}
+
+        {% if c_year != showdate %}
+            {% assign showdate = c_year %}
+            <div class="collection-title fa fa-calendar-o"><h2>{{ showdate }}</h2></div>
+        {% endif %}
+
+        <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+            <header class="post-header">
+                <div class="post-meta">
+                    <time class="post-time" datetime="{{ c_monthday }}" content="{{ c_monthday }}">
+                        {% if c_monthday == u_monthday %}
+                            {{ c_monthday }}
+                        {% else %}
+                            {{ c_monthday }} ~ {{ u_monthday }}
+                        {% endif %}
+                    </time>
+                </div>
+
+                <h3 class="post-title" style="margin-left:100px;">
+                    <a href="/category/#/{{name}}" style="margin-left:15px; font-size:14px; opacity:0.6">
+                        <span class="book-title-mark -left"></span>
+                        <span class="book-title">{{ name | replace: '《', '' | replace: '》', '' }}</span>
+                        <span class="book-title-mark -right"></span>
+                    </a>
+                </h3>
+            </header>
+        </article>
+    {% endfor %}
+</section>
+
+<nav class="pagination"></nav>

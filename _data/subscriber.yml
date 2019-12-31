@@ -1,0 +1,4 @@
+# Wechat Subscriber
+enabled: true
+qcode: /assets/images/wechat-mp.jpg
+description: ""

@@ -1,0 +1,16 @@
+# Google Webmaster tools verification setting
+# See: https://www.google.com/webmasters/
+- name: google-site-verification
+  value: "1111"
+  enable: false
+# Yandex Webmaster tools verification setting
+# See: https://webmaster.yandex.ru/
+- name: yandex-verification
+  value: "2222"
+  enable: false
+- name: baidu-site-verification
+  value: 3333
+  enable: false
+- name: 360-site-verification
+  value: 4444
+  enable: false

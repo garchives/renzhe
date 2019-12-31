@@ -1,0 +1,15 @@
+# Google Calendar
+# Share your recent schedule to others via calendar page
+#
+# API Documentation:
+# https://developers.google.com/google-apps/calendar/v3/reference/events/list
+enable: true
+calendar_id: <required>
+api_key: <required>
+orderBy: startTime
+offsetMax: 24
+offsetMin: 4
+timeZone:
+showDeleted: false
+singleEvents: true
+maxResults: 250

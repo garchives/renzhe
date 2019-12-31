@@ -1,0 +1,14 @@
+.tag-cloud {
+  // text-align: center;
+  margin: 0 0 40px 40px;
+
+  a {
+    display: inline-block;
+    margin: 8px;
+    font-size: 12px!important;
+    color: #999!important;
+    border: 1px solid #ddd;
+    padding: 2px 16px;
+    border-radius: 20px;
+  }
+}

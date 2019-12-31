@@ -1,0 +1,234 @@
+# ---------------------------------------------------------------
+# Jekyll & Global Configuration
+## Docs: https://jekyllrb.com/docs/configuration/
+# ---------------------------------------------------------------
+
+name: 仁者
+title: 仁者的博客
+subtitle: ""
+keywords: "Jekyll, NexT" # Set default keywords (Use a comma to separate)
+description: 尹仁强的博客
+author: Jins Yin
+# Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
+language: en
+date_format: '%Y-%m-%d'
+
+# URL
+url: "https://yinrenqiang.com"
+baseurl: "" # It's defaults
+permalink: pretty
+
+# Pagination
+paginate: 10
+paginate_path: "/page/:num/"
+#archive:
+  #paginate: 10
+  #paginate_path: "/page/:num/"
+#category:
+  #paginate: 10
+  #paginate_path: "/page/:num/"
+#tag:
+  #paginate: 10
+  #paginate_path: "/page/:num/"
+
+# Handling Reading
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "Gemfile", "Gemfile.lock", "README_en.md", "vendor"]
+
+# Code Highlighter
+## 'pygments' is unsupported on GitHub Pages now.
+highlighter: rouge
+
+#### Markdown Processors
+## 'redcarpet' is unsupported on GitHub Pages now.
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+# Default Attributes
+## Docs: https://jekyllrb.com/docs/configuration/#front-matter-defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      permalink: /:year/:month/:day/:title:output_ext
+  - scope:
+      path: ""
+      type: pages
+    values:
+      permalink: /:path/:basename:output_ext
+
+# jekyll-feed plugin
+feed:
+  path: rss.xml # default: feed.xml
+
+# Plugins
+## Docs: https://help.github.com/articles/configuring-jekyll-plugins/
+plugins:
+ - jemoji
+ - jekyll-sitemap
+ - jekyll-feed    # {% feed_meta %}
+ - jekyll-seo-tag # {% seo %}
+ - jekyll-redirect-from
+
+# ---------------------------------------------------------------
+# Site Information Settings
+# ---------------------------------------------------------------
+
+# Specify the date when the site was setup
+#since: 2015
+
+# ---------------------------------------------------------------
+# SEO Settings
+# ---------------------------------------------------------------
+
+# Canonical, set a canonical link tag in your jekyll, you could use it for your SEO of blog.
+# See: https://support.google.com/webmasters/answer/139066
+# Tips: Before you open this tag, remember set up your URL in _config.yml ( ex. url: http://yourdomain.com )
+canonical: true
+
+# Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
+seo: false
+
+# If true, will add site-subtitle to index page, added in jekyll config.
+# subtitle: Subtitle
+index_with_subtitle: false
+
+
+
+
+
+# ---------------------------------------------------------------
+# Scheme Settings
+# ---------------------------------------------------------------
+
+# Schemes
+scheme: Muse
+#scheme: Mist
+#scheme: Pisces
+
+
+
+
+
+
+
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+
+
+# Social Links
+# Key is the link label showing to end users.
+# Value is the target link (E.g. GitHub: https://github.com/iissnan)
+#social:
+  #LinkLabel: Link
+
+
+# Social Links Icons
+# Icon Mapping:
+#   Map a menu item to a specific FontAwesome icon name.
+#   Key is the name of the item and value is the name of FontAwesome icon. Key is case-senstive.
+#   When an globe mask icon presenting up means that the item has no mapping icon.
+social_icons:
+  enable: true
+  # Icon Mappings.
+  # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
+  GitHub: github
+  Twitter: twitter
+  Weibo: weibo
+
+
+# Sidebar Avatar
+# in directory: /assets/images/avatar.gif
+#avatar:
+
+
+# Table Of Contents in the Sidebar
+toc:
+  enable: true
+
+  # Automatically add list number to toc.
+  number: true
+
+  # If true, all words will placed on next lines if header width longer then sidebar width.
+  wrap: false
+
+
+# Creative Commons 4.0 International License.
+# http://creativecommons.org/
+# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+#creative_commons: by-nc-sa
+#creative_commons:
+
+
+
+
+# Blog rolls
+#links_title: Links
+#links_layout: block
+#links_layout: inline
+#links:
+  #Title: http://example.com/
+
+
+
+
+# ---------------------------------------------------------------
+# Misc Theme Settings
+# ---------------------------------------------------------------
+
+
+# Code Highlight theme
+# Available value:
+#    normal | night | night eighties | night blue | night bright
+# https://github.com/chriskempson/tomorrow-theme
+highlight_theme: normal
+
+
+#! ---------------------------------------------------------------
+#! DO NOT EDIT THE FOLLOWING SETTINGS
+#! UNLESS YOU KNOW WHAT YOU ARE DOING
+#! ---------------------------------------------------------------
+
+# Motion
+use_motion: true
+
+# Fancybox
+fancybox: true
+
+# Canvas-nest
+canvas_nest: false
+
+# three_waves
+three_waves: false
+
+# canvas_lines
+canvas_lines: false
+
+# canvas_sphere
+canvas_sphere: false
+
+# Only fit scheme Pisces
+# Canvas-ribbon
+canvas_ribbon: false
+
+
+
+
+# Assets
+css: assets/css
+js: assets/js
+images: assets/images
+
+#========================= more settings ===========================#
+
+since: 2019

@@ -1,0 +1,74 @@
+---
+---
+
+{% assign __ = site.data.params %}
+
+<!doctype html>
+<html class="{{ 'theme-next ' | append: site.scheme | downcase }} {%if site.use_motion%}use-motion{%endif%}" lang="{{site.language}}">
+
+{% include h5head.html %}
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang | default: page.language | default: site.language }}">
+
+  <div class="container sidebar-position-left">
+    {% include header.html %}
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">{{ content }}</div>
+        </div>
+      </div>
+    </main>
+
+    {% include footer.html %}
+    {% include sidebar.html %}
+  </div>
+
+  <!-- scripts vendors start -->
+  {% include scripts/vendors.html %}
+  <!-- scripts vendors end -->
+
+   <script type="text/javascript" src="{{ '/assets/js/src/utils.js' | relative_url }}"></script>
+   <script type="text/javascript" src="{{ '/assets/js/src/motion.js' | relative_url }}"></script>
+
+  {% assign scheme_script = 'scripts/schemes/' | append: site.scheme | downcase | append: '.html' %}
+  {% include {{ scheme_script }} %}
+
+  <!-- script_extra start -->
+  {% case page.layout %}
+  {% when 'post' %}
+    {% capture script_extra %}{% include scripts/pages/post-details.html %}{% endcapture %}
+  {% when 'archive' %}
+    {% capture script_extra %}
+      {% if site.use_motion %}
+        <script type="text/javascript" id="motion.page.archive">$('.archive-year').velocity('transition.slideLeftIn');</script>
+      {% endif %}
+      {% include scripts/pages/pagination.html %}
+    {% endcapture %}
+  {% when 'category' %}
+    {% capture script_extra %}
+      {% include scripts/pages/pagination.html %}
+    {% endcapture %}
+  {% when 'tag' %}
+    {% capture script_extra %}
+      {% include scripts/pages/pagination.html %}
+    {% endcapture %}
+  {% else %}
+    {% capture script_extra %}{% include scripts/pages/post-details.html %}{% endcapture %}
+  {% endcase %}
+  {{ script_extra }}
+  <!-- script_extra end -->
+
+
+  <script type="text/javascript" src="{{ '/assets/js/src/bootstrap.js' | relative_url }}"></script>
+
+  {% include search/index.html %}
+
+  {% include baidu-push.html %}
+
+  {% include mathjax.html %}
+
+  <!-- <script type="text/javascript" src="{{ site.js | relative_url }}/src/exturl.js"></script> -->
+</body>
+</html>

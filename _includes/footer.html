@@ -1,0 +1,20 @@
+<footer id="footer" class="footer">
+    <div class="footer-inner">
+        <div class="copyright" >
+            {% assign current = site.time | date: '%Y' %}
+            {% assign since = site.since | downcase %}
+            &copy; {% if site.since and since != current %} {{ since }} - {% endif %}
+            <span itemprop="copyrightYear">{{ current }}</span>
+            <span class="with-love"><i class="fa fa-heart"></i></span>
+            <span class="author" itemprop="copyrightHolder">{{ site.author }}</span>
+        </div>
+
+        <div class="powered-by">
+            Powered by <a class="theme-link" href="https://jekyllrb.com">Jekyll</a>
+        </div>
+        <div class="theme-info">
+            Theme -
+            <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">NexT.{{ site.scheme }}</a>
+        </div>
+    </div>
+</footer>

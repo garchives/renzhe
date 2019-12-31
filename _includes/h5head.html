@@ -1,0 +1,41 @@
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ '/favicon.ico' | relative_url }}" />
+    <link href="{{ '/assets/lib/fancybox/source/jquery.fancybox.css' | relative_url }}" rel="stylesheet" type="text/css" />
+    <link href="{{ '/assets/lib/font-awesome/css/font-awesome.min.css' | relative_url }}" rel="stylesheet" type="text/css" />
+    <link href="{{ site.css | relative_url }}/main.css" rel="stylesheet" type="text/css" />
+
+    <meta name="keywords" content="{{ page.keywords or page.tags | join: ',' or site.keywords }}" />
+
+    {% feed_meta %} {% comment %} jekyll-feed plugin {% endcomment %}
+    {% seo %} {% comment %} jekyll-seo-tag plugin {% endcomment %}
+
+    {% assign verifications = site.data.site-verifications | where: 'enable', true %}
+    {% for sv in verifications %}<meta name="{{ sv.name }}" content="{{ sv.value }}" />{% endfor %}
+
+    {% include analytics.html %}
+
+    {% comment %} Export some Jekyll Configurations to Front-End {% endcomment %}
+    <script type="text/javascript" id="jekyll.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+        root: '{{ site.baseurl }}',
+        scheme: '{{ site.scheme }}',
+        sidebar: {{ site.data.sidebar | jsonify }},
+        fancybox: {{ site.fancybox }},
+        motion: {{ site.use_motion }},
+        algolia: {
+            applicationID: '{{ site.algolia.applicationID }}',
+            apiKey: '{{ site.algolia.apiKey }}',
+            indexName: '{{ site.algolia.indexName }}',
+            hits: {{ site.search.algolia.hits | jsonify }},
+            labels: {{ site.search.algolia.labels | jsonify }}
+        }
+    };
+    </script>
+</head>

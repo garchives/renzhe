@@ -1,0 +1,36 @@
+<article class="post post-type-{{ post.type | default: 'normal' }}" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <div class="post-meta">
+            <time class="post-time"
+                datetime="{{ post.date | date_to_xmlschema }}"
+                content="{{ post.date | date: site.date_format }}">{{ post.date | date: '%m-%d' }}</time>
+        </div>
+
+        <h3 class="post-title">
+            {% if post.link %}
+                <a href="{{ post.link }}" target="_blank">
+                    {{ post.title | default: post.link }}
+                    <i class="fa fa-external-link"></i>
+                </a>
+            {% else %}
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            {% endif %}
+
+            {% for category in post.categories %}
+                <a href="/category/#/{{category}}" style="margin-left:8px; font-size:14px; opacity:0.6">
+                    <!-- <i class="fa fa-book" style="font-size:12px;position: relative;right:-0.8em;"></i> -->
+                    <span class="book-title-mark -left"></span>
+                    <span class="book-title">{{ category | replace: '《', '' | replace: '》', '' }}</span>
+                    <span class="book-title-mark -right"></span>
+                </a>
+            {% endfor %}
+
+            {% for tag in post.tags %}
+                <a href="/tag/#/{{tag}}" style="margin-left:15px; font-size:14px; opacity:0.6">
+                    <i class="fa fa-tag" style="font-size:12px;"></i>
+                    <span>{{ tag }}</span>
+                </a>
+            {% endfor %}
+        </h3>
+    </header>
+</article>
